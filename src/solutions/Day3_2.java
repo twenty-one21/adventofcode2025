@@ -3,27 +3,40 @@ package solutions;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 
 class Day3_2 {
-    public static char highestBattery(String bank) {
+    public static int highestBattery(String bank) {
         char highest = 1;
         for (int i = 0; i < bank.length(); i++) {
             if (bank.charAt(i) > highest) highest = bank.charAt(i);
         }
-        return highest;
+        return +(highest - '0');
+    }
+    public static int getIndexOfString(String str, int i) {
+        char asChar = (char) (i + '0');
+        return str.indexOf(asChar);
+    }
+    public static int[] highestJoltage(String bank, int[] joltage, int index) {
+        if (index == 12) {
+            return joltage;
+        }
+        joltage[index] = highestBattery(bank.substring(0, bank.length()-11+index)); //123456789123456789 -- must not be last 12 for first
+//        System.out.println(bank.substring(0, bank.length()-12+index));
+        return highestJoltage(bank.substring(getIndexOfString(bank, joltage[index]) + 1), joltage, index + 1);
+    }
+    public static int[] highestJoltage(String bank) {
+        return highestJoltage(bank, new int[12], 0);
     }
     public static void main(String[] args) throws IOException {
         String input = Files.readString(Path.of("src/inputs/day3.txt"));
         String[] banks = input.split("\n");
-        int sum = 0;
+        long sum = 0;
         for (String bank : banks) {
-            int b1, b2;
-            b1 = highestBattery(bank.substring(0, bank.length()-1));
-            b2 = highestBattery(bank.substring(bank.indexOf(b1)+1));
-            b1 = b1 - '0';
-            b2 = b2 - '0';
-            System.out.printf("b1:%d,b2:%d,joltage:%d\n",b1,b2,10*b1+b2);
-            sum += 10*b1 + b2;
+            int[] joltage = highestJoltage(bank);
+            for (int i = 0; i < 12; i++) {
+                sum += (long) joltage[i] * (long) Math.pow(10, 11-i);
+            }
         }
         System.out.println(sum);
     }
