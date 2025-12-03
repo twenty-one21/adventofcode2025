@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
 
-class Day2 {
+class Day2_1 {
     public static void main(String[] args) throws IOException {
         String input = Files.readString(Path.of("src/inputs/day2.txt"));
         ArrayList<Long> invalids = new ArrayList<>();
