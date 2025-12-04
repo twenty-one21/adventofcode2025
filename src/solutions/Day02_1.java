@@ -5,9 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-class Day2_1 {
+class Day02_1 {
     public static void main(String[] args) throws IOException {
-        String input = Files.readString(Path.of("src/inputs/day2.txt"));
+        String input = Files.readString(Path.of("src/inputs/day02.txt"));
         ArrayList<Long> invalids = new ArrayList<>();
 //        Stream<String> stream = input.lines();
         String[] ranges = input.split(",");

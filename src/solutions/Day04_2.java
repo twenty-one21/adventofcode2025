@@ -5,13 +5,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-class Day4_2 {
+class Day04_2 {
     public static int rollAtLocation(char[][] grid, int row, int column) {
 //        System.out.print(grid[row][column]=='@');
         return grid[row][column]=='@'?1:0;
     }
     public static void main(String[] args) throws IOException {
-        String input = Files.readString(Path.of("src/inputs/day4.txt"));
+        String input = Files.readString(Path.of("src/inputs/day04.txt"));
 
         //populate 2d array
         String[] rows = input.split("\n"); //"..@@.." , "@@..@@" etc

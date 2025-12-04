@@ -4,15 +4,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-class Day4_1 {
+class Day04_1 {
     public static int rollAtLocation(char[][] grid, int row, int column) {
 //        System.out.print(grid[row][column]=='@');
         return grid[row][column]=='@'?1:0;
     }
     public static void main(String[] args) throws IOException {
-        String input = Files.readString(Path.of("src/inputs/day4.txt"));
+        String input = Files.readString(Path.of("src/inputs/day04.txt"));
 
         //populate 2d array
         String[] rows = input.split("\n"); //"..@@.." , "@@..@@" etc

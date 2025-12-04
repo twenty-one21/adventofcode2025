@@ -3,9 +3,8 @@ package solutions;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 
-class Day3_2 {
+class Day03_2 {
     public static int highestBattery(String bank) {
         char highest = 1;
         for (int i = 0; i < bank.length(); i++) {
@@ -29,7 +28,7 @@ class Day3_2 {
         return highestJoltage(bank, new int[12], 0);
     }
     public static void main(String[] args) throws IOException {
-        String input = Files.readString(Path.of("src/inputs/day3.txt"));
+        String input = Files.readString(Path.of("src/inputs/day03.txt"));
         String[] banks = input.split("\n");
         long sum = 0;
         for (String bank : banks) {

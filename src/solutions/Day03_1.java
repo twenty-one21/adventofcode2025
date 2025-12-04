@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-class Day3_1 {
+class Day03_1 {
     public static char highestBattery(String bank) {
         char highest = 1;
         for (int i = 0; i < bank.length(); i++) {
@@ -13,7 +13,7 @@ class Day3_1 {
         return highest;
     }
     public static void main(String[] args) throws IOException {
-        String input = Files.readString(Path.of("src/inputs/day3.txt"));
+        String input = Files.readString(Path.of("src/inputs/day03.txt"));
         String[] banks = input.split("\n");
         int sum = 0;
         for (String bank : banks) {

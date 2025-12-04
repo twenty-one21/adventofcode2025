@@ -3,9 +3,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-class Day1_1 {
+class Day01_1 {
     public static void main(String[] args) throws IOException {
-        String input = Files.readString(Path.of("src/inputs/day1.txt"));
+        String input = Files.readString(Path.of("src/inputs/day01.txt"));
         String[] lines = input.split("\n");
         int zeroes = 0;
         int rotation = 50;

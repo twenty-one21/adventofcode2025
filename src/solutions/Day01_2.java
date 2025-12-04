@@ -3,12 +3,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-class Day1_2 {
+class Day01_2 {
     static int mod100(int n) {
         return n - 100*(n/100);
     }
     public static void main(String[] args) throws IOException {
-        String input = Files.readString(Path.of("src/inputs/day1.txt"));
+        String input = Files.readString(Path.of("src/inputs/day01.txt"));
         String[] lines = input.split("\n");
         int zeroes = 0;
         int dial = 50;
