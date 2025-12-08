@@ -31,7 +31,6 @@ class Day07_2 {
             System.out.println(line);
         }
         Optional<BigInteger> timelines = Arrays.stream(tachyon).reduce(BigInteger::add);
-//        CharBuffer.wrap(tachyon).chars().map(c -> c - '0').forEach(c -> System.out.print(c + " "));
         System.out.println();
         System.out.println(Arrays.toString(tachyon));
         System.out.println(timelines.get());
