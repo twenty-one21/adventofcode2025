@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
-class Day08_1 {
+class Day08_2 {
     public static double euclidianDistance(int[] c1, int[] c2) {
         return Math.sqrt(
                 Math.pow(c2[0]-c1[0], 2)
@@ -30,9 +30,11 @@ class Day08_1 {
                 }
             }
         }
+        long x1 = 0;
+        long x2 = 0;
         List<Double> sortedDistances = hashMap.keySet().stream().sorted().toList();
         List<List<int[]>> junctions = coords.stream().map(coord -> new ArrayList<>(Collections.singletonList(coord))).collect(Collectors.toCollection(ArrayList::new)); //List of junctions, which are lists of coordinates, which are arrays of integers :-)
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < sortedDistances.size(); i++) {
             double distance = sortedDistances.get(i);
             int[] coord1 = hashMap.get(distance).get(0);
             int[] coord2 = hashMap.get(distance).get(1);
@@ -64,6 +66,11 @@ class Day08_1 {
                 junctions.remove(j2);
                 junctions.add(junctionUnion);
             }
+            if (junctions.size() == 1) {
+                x1 = coord1[0];
+                x2 = coord2[0];
+                break;
+            }
         }
         // print junctions
         for (List<int[]> j : junctions) {
@@ -73,22 +80,7 @@ class Day08_1 {
         }
         System.out.println();
         //get 3 largest junctions
-        int large1 = -1;
-        int large2 = -1;
-        int large3 = -1;
-        for (List<int[]> junction : junctions) {
-            if (junction.size() > large1) {
-                large3 = large2;
-                large2 = large1;
-                large1 = junction.size();
-            } else if (junction.size() > large2 && junction.size() != large1) {
-                large3 = large2;
-                large2 = junction.size();
-            } else if (junction.size() > large3 && junction.size() != large1 && junction.size() != large2) {
-                large3 = junction.size();
-            }
-        }
-        System.out.printf("large1: %d\nlarge2: %d\nlarge3: %d\nprod: %d\n",large1,large2,large3,large1*large2*large3);
+        System.out.println(x1*x2);
 //        System.out.println("distances "  + sortedDistances);
 //        for (List<Integer> coord : coords) {
 //            System.out.println(coord.toString());
